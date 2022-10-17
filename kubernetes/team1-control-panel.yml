@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: 10-control-panel
-          image: 156.17.249.228:30011/10-control-panel:team-1
+          image: docker.mopalinski.com/10-control-panel:team-1
           imagePullPolicy: Always
           ports:
             - containerPort: 80
