@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 10-control-panel
+  namespace: team-2
+  labels:
+    app: 10-control-panel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 10-control-panel
+  template:
+    metadata:
+      labels:
+        app: 10-control-panel
+    spec:
+      containers:
+        - name: ransomware
+          image: 156.17.249.228:30011/10-control-panel:team-2
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      nodeSelector:
+        kubernetes.io/hostname: wn1523
+      imagePullSecrets:
+        - name: regcred
