@@ -1,27 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: 10-control-panel
-  namespace: team-3
-  labels:
-    app: 10-control-panel
+    name: cybertron-10-control-panel
+    namespace: team-3
+    labels:
+        app: cybertron-10-control-panel
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: 10-control-panel
-  template:
-    metadata:
-      labels:
-        app: 10-control-panel
-    spec:
-      containers:
-        - name: ransomware
-          image: docker.mopalinski.com/10-control-panel:team-3
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 80
-      nodeSelector:
-        kubernetes.io/hostname: wn1523
-      imagePullSecrets:
-        - name: regcred
+    replicas: 1
+    selector:
+        matchLabels:
+            app: cybertron-10-control-panel
+    template:
+        metadata:
+            labels:
+                app: cybertron-10-control-panel
+        spec:
+            containers:
+                - name: cybertron-10-control-panel
+                  image: docker.mopalinski.com/cybertron-10-control-panel:latest
+                  imagePullPolicy: Always
+                  ports:
+                      - containerPort: 80
+                  env:
+                      - name: "FLAG"
+                        value: "CyberTron22{x5s_i5_c00l_77aa29257db7}"
+                      - name: "ADMIN_PASSWORD"
+                        value: "X{wn:DFU7+/ksZ+s3g7{vZwP#u92e[RC"
+                      - name: "USER_PASSWORD"
+                        value: "user"
+            nodeSelector:
+                kubernetes.io/hostname: wn1523
+            imagePullSecrets:
+                - name: regcred
