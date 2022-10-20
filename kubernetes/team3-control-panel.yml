@@ -22,12 +22,24 @@ spec:
                   ports:
                       - containerPort: 80
                   env:
-                      - name: "FLAG"
-                        value: "CyberTron22{x5s_i5_c00l_77aa29257db7}"
-                      - name: "ADMIN_PASSWORD"
-                        value: "X{wn:DFU7+/ksZ+s3g7{vZwP#u92e[RC"
-                      - name: "USER_PASSWORD"
-                        value: "user"
+                      - name: FLAG
+                        valueFrom:
+                            secretKeyRef:
+                                name: cybertron-10-control-panel
+                                key: FLAG
+                                optional: false
+                      - name: ADMIN_PASSWORD
+                        valueFrom:
+                            secretKeyRef:
+                                name: cybertron-10-control-panel
+                                key: ADMIN_PASSWORD
+                                optional: false
+                      - name: USER_PASSWORD
+                        valueFrom:
+                            secretKeyRef:
+                                name: cybertron-10-control-panel
+                                key: USER_PASSWORD
+                                optional: false
             nodeSelector:
                 kubernetes.io/hostname: wn1523
             imagePullSecrets:
